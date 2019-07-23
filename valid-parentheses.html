@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var isValid = function(s) {  
+        s = s.split('');
+        if(s === '' || s === undefined){
+            return false;
+        }
+        for(let i = 0; i < s.length; i++){
+            var brackets = [['(', ')'], ['[', ']'], ['{', '}']];
+            for(let x = 0; x < brackets.length; x++){
+                //console.log(brackets[0][0])
+              //  console.log(s[i])
+                if(s[i] == brackets[x][0]){
+                    console.log(brackets)
+                    let bracketsFiltered = [...brackets];
+                    bracketsFiltered.splice(bracketsFiltered[x], 1);
+                   console.log(bracketsFiltered)
+                    for(let n = 0; n < bracketsFiltered.length; n++){
+                        if(s[i + 1] === bracketsFiltered[n][1] && (i + 1) < s.length)
+                            return false;
+                        }
+                    }
+                }
+            }
+            return true;
+        };
+        console.log(isValid('()('))
+        isValid('()')
+    </script>
+</body>
+</html>
