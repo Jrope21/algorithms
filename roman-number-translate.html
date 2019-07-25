@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /**
+ * @param {string} s
+ * @return {number}
+ */
+var romanToInt = function(s) {
+    s = s.split('');
+    let counter = 0;
+    let symbols = {
+        I: 1,
+        V: 5,
+        X: 10,
+        L: 50,
+        C: 100,
+        D: 500,
+        M: 1000
+    }
+    console.log(s)
+    for(let i = 0; i < s.length; i++){
+      if(s[i] == 'V' && s[i - 1] == 'I'){
+          counter += 4 - symbols[s[i - 1]];
+      }
+      else if(s[i] == 'X' && s[i - 1] == 'I'){
+          counter += 9 - symbols[s[i - 1]];
+      }
+      else if(s[i] == 'L' && s[i - 1] == 'X'){
+          counter += 40 - symbols[s[i - 1]];
+      }
+      else if(s[i] == 'C' && s[i - 1] == 'X'){
+          counter += 90 - symbols[s[i - 1]];
+      }
+      else if (s[i] == 'D' && s[i - 1] == 'C'){
+          counter += 400 - symbols[s[i - 1]]
+      }
+      else if(s[i] == 'M' && s[i - 1] == 'C'){
+          counter += 900 - symbols[s[i - 1]]
+      }
+      else{
+        counter += symbols[s[i]];
+      }
+        //console.log(test)
+        console.log(counter)
+    }
+};
+romanToInt('MCMXCIV')
+    </script>
+</body>
+</html>
