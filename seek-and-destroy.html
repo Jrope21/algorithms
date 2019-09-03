@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function destroyer(arr) {
+            let args = [];
+            for(let i = 1; i < arguments.length; i++){
+                args.push(arguments[i]);
+            }
+            let newArr = arr.filter(function(val) {
+                let toggler = true;
+                for(let x = 0; x < args.length; x++){
+                    if (args[x] == val) {
+                        toggler = false;
+                    }
+                }
+                return toggler;
+            });
+
+            return newArr
+        }
+        console.log(destroyer([1, 2, 3, 1, 2, 3], 2, 3))
+        destroyer([1, 2, 3, 1, 2, 3], 2, 3);
+    </script>
+</body>
+</html>
