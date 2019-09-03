@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //solution 1 
+// var isPalindrome = function(x) {
+//     x = x.toString();
+//     x = x.split('')
+//     let xRev = [...x].reverse().join('');
+//     for (let i = 0; i < x.length; i++){
+//        if( x[i] != xRev[i]) return false;
+//     }
+//    return true;
+// }
+
+//solution 2 - regex
+var isPalindrome = function(x) {
+    x = x.toString();
+    let xRev = [...x].reverse().join('');
+    return RegExp(x).test(xRev);
+};
+isPalindrome(123)
+console.log(isPalindrome(121))
+    </script>
+</body>
+</html>
