@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // only add the odd numbers && the numbers that are less than that of num
+        function sumFibs(num) {
+            let lessThanValue = num;
+            let fibNums = []
+            let finalSum = 0;
+            let counter = 0;
+            //fibonacci algorithm setup
+            while(num > 0) {
+                let lastItem = fibNums[fibNums.length - 1];
+                let beforeLastItem = fibNums[fibNums.length - 2]
+                if (counter < 2) {
+                    fibNums.push(1)
+                    counter++;
+                } else {
+                    fibNums.push(lastItem + beforeLastItem);
+                }
+                num--;
+            }
+            // only adding odd numbers
+            fibNums.forEach((item)=>{
+                if(item & 1 && finalSum <= lessThanValue){
+                    finalSum += item;
+                }
+            })
+            console.log(1 & 1);
+            console.log(4 & 1);
+            console.log('finalnum', finalSum);
+            console.log('fibnums', fibNums);
+            return finalSum;
+        }
+        sumFibs(75024)
+        
+    </script>
+</body>
+</html>
