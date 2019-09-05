@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function sumPrimes(num) {
+            const primeList = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43]
+            let primeNumPossible = [];
+           
+            for (let i = 0; i <= num; i++) {
+                primeNumPossible.push(i);
+            }
+            
+            for (let x = 0; x < primeList.length; x++) {
+                let totalCounter = primeList[x];
+                while (totalCounter <= num){
+                    totalCounter += primeList[x];
+                    primeNumPossible[totalCounter] = 0;
+                }
+            }
+            console.log(primeNumPossible);
+           let allPrimes = primeNumPossible.filter((number) => {
+                return number >= 2
+           })
+           console.log(allPrimes)
+           let primeSum = allPrimes.reduce((a, b) => {
+            return a + b;
+           }, 0)
+           console.log(primeSum)
+            return num;
+        }
+
+        sumPrimes(977);
+
+    </script>
+</body>
+</html>
