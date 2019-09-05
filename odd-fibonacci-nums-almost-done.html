@@ -8,10 +8,14 @@
 </head>
 <body>
     <script>
+
+         //my attempt at creating fib program -- no google
         // only add the odd numbers && the numbers that are less than that of num
-        function sumFibs(num) {
+       
+     /*   function sumFibs(num) {
             let lessThanValue = num;
             let fibNums = []
+            let testNums = []
             let finalSum = 0;
             let counter = 0;
             //fibonacci algorithm setup
@@ -32,6 +36,7 @@
                     finalSum += item;
                 }
             })
+
             console.log(1 & 1);
             console.log(4 & 1);
             console.log('finalnum', finalSum);
@@ -39,7 +44,42 @@
             return finalSum;
         }
         sumFibs(75024)
-        
+        */
+
+
+
+
+
+
+
+
+        //solution after reading psuedo code for fibonacci algo
+        function sumFibs(num) {
+            let maxNum = num;
+            let fibNums = [...Array(num)].fill(true);
+            //fibonacci algorithm setup - find primes
+            for (let i = 2; i < maxNum; i++) {
+                // console.log(i)
+                if(fibNums[i] == true){
+                    for (let j = i * i; j < num; j += i) {
+                        fibNums[j] = false;
+                    }
+                }
+                
+            }
+            //first two indexes aren't prime by default
+            fibNums[0] = false;
+            fibNums[1] = false;
+
+            //add odd prime numbers together
+            let finalSum = 0;
+            fibNums.forEach((number, i) => {
+                if (number == true && i & 1) finalSum += i;
+            })
+
+            return finalSum;
+        }
+        sumFibs(10)
     </script>
 </body>
 </html>
