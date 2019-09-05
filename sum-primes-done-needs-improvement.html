@@ -8,14 +8,17 @@
 </head>
 <body>
     <script>
-        function sumPrimes(num) {
+        /*function sumPrimes(num) {
+            //setup list of known primes to compare with 
+            //TODO - these numbers should automatically generate as well
             const primeList = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43]
             let primeNumPossible = [];
-           
+           //setup array of numbers 1... N
             for (let i = 0; i <= num; i++) {
                 primeNumPossible.push(i);
             }
             
+            //set non prime numbers to 0
             for (let x = 0; x < primeList.length; x++) {
                 let totalCounter = primeList[x];
                 while (totalCounter <= num){
@@ -24,18 +27,55 @@
                 }
             }
             console.log(primeNumPossible);
+
+            //filter out non prime numbers from array
            let allPrimes = primeNumPossible.filter((number) => {
                 return number >= 2
            })
            console.log(allPrimes)
+           //sum all of the prime numbers
            let primeSum = allPrimes.reduce((a, b) => {
             return a + b;
            }, 0)
            console.log(primeSum)
-            return num;
+            return primeSum;
         }
 
-        sumPrimes(977);
+        sumPrimes(977);*/
+
+        //solution after reading psuedo code for ffinding primes algo
+        function sumFibs(num) {
+            let maxNum = num;
+            let fibNums = [...Array(num)].fill(true);
+
+             //first two indexes aren't prime by default
+            fibNums[0] = false;
+            fibNums[1] = false;
+
+            //find primes algorithm setup
+            for (let i = 2; i < maxNum; i++) {
+       
+                if(fibNums[i] == true){
+
+                    for (let j = i * i; j < num; j += i) {
+                        fibNums[j] = false;
+                    }
+
+                }
+                
+            }
+           
+
+            //add odd prime numbers together
+            let finalSum = 0;
+
+            fibNums.forEach((number, i) => {
+                if (number == true && i & 1) finalSum += i;
+            })
+
+            return finalSum;
+        }
+        sumFibs(10)
 
     </script>
 </body>
