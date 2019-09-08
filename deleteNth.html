@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    //Delete occurrences of an element if it occurs more than n times
+
+        function deleteNth(arr,n){
+            arr = arr.sort();
+            let newArr = [];
+        
+            for(let i = 0; i < arr.length; i++){
+            let totalDups = 1;
+            let pushOrNah = true;
+
+                for(let j = 0; j < newArr.length; j++){
+                    
+                    if(arr[i] == newArr[j]){
+                        console.log(arr[i], newArr[j])
+                        totalDups++;
+                    }
+                    if(totalDups > n){
+                        pushOrNah = false;
+                    }
+                }
+                if(pushOrNah === true) newArr.push(arr[i])
+            }
+            
+            return newArr;
+            // ...
+        }
+
+console.log(deleteNth([20,37,20,21], 1));
+deleteNth([20,37,20,21], 1);
+
+    </script>
+</body>
+</html>
