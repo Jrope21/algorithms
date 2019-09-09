@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+//         Find the smallest common multiple of the provided parameters that can be evenly divided by both,
+//          as well as by all sequential numbers in the range between these parameters.
+
+//         The range will be an array of two numbers that will not necessarily be in numerical order.
+
+// For example, if given 1 and 3, find the smallest common multiple of both 1 and 3 that is also evenly divisible by all numbers between 1 and 3. 
+// The answer here would be 6.
+
+// Remember to use Read-Search-Ask if you get stuck. Try to pair program. Write your own code.
+
+        function smallestCommons(arr) {
+            let foundNum = false;
+            // arr = arr.sort()
+            const largerNum = arr[0] > arr[1] ? arr[0] : arr[1];
+            const smallerNum = arr[0] > arr[1] ? arr[1] : arr[0];
+            let sequentialNums = [];
+
+            let acceptedMultiple = largerNum;
+
+            for(let i = smallerNum; i <= largerNum; i++){
+                sequentialNums.push(i);
+            }
+
+            while(foundNum === false){
+                console.log(acceptedMultiple);
+                if(Number.isInteger(acceptedMultiple / largerNum) && Number.isInteger(acceptedMultiple / smallerNum)){
+                    let numCorrect = 0;
+                    for(let j = 1; j < sequentialNums.length - 1; j++){
+                        if(Number.isInteger(acceptedMultiple / sequentialNums[j])){
+                            numCorrect++;
+                        }
+                    }
+                    if(numCorrect === sequentialNums.length - 2) foundNum = true;
+                    else acceptedMultiple += largerNum;
+                    
+                } else {
+                    acceptedMultiple += largerNum;
+                }
+                if (acceptedMultiple > 6056) foundNum = true; //stop loop from running if incorrect
+            }
+            
+           
+
+
+            return acceptedMultiple;
+        }
+
+       // console.log(smallestCommons([1, 5]))
+      // smallestCommons([1,5]);  //should return 60
+
+        // console.log(smallestCommons([2, 10]))
+    //    smallestCommons([2, 10]) //should return 2520.
+       
+
+        //wont work while loop times out
+       //console.log(smallestCommons([23, 10]))
+       //smallestCommons([23, 18])// should return 6056820
+    </script>
+</body>
+</html>
