@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+// had to add extra lines to match leetcodes data set
+//TODO needs to get refactored
+
+    var reverse = function(x) {
+        x = x.toString().split('');
+        
+        
+        let foundNum = false;
+        let i = x.length - 1;
+
+        //this loop is most likely redundant
+        while(foundNum = false && i > 0){
+
+            if(x[i] !== 0){
+                foundNum = true;
+            } else {
+                x.pop()
+            }
+
+            i--;
+        }
+        
+        x = x.reverse();
+        
+        if(x[x.length - 1] == '-'){
+            x.pop();
+            x = x.join('');
+            let finalNum = '-' + parseInt(x);
+            console.log(finalNum)
+            return finalNum < -2147483647 ? 0 : finalNum;
+        }
+        console.log(x);
+        x = x.join('');
+        let finalNum = parseInt(x);
+        // console.log(finalNum);
+        return finalNum > 2147483647 ? 0 : finalNum;
+        
+    };  
+
+    reverse(-123);
+    </script>
+</body>
+</html>

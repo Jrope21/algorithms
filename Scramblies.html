@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+       // Complete the function scramble(str1, str2) that returns true if a portion of str1
+      //  characters can be rearranged to match str2, otherwise returns false.
+
+
+//solution 1 -- passed test cases -- timed out on 1 test case out of 60
+
+        // function scramble(str1, str2) {
+
+        //     str1 = str1.split('');
+        //     str2 = str2.split('');
+
+        //     let filteredStr = str2.filter((letter) => {
+        //         let position = str1.indexOf(letter);
+                
+        //         if( position > -1 ) {
+        //             str1.splice(position, 1);
+        //             return true;
+        //         }
+        //     })
+
+
+
+        //     if(filteredStr.length === str2.length) return true;
+        //     else return false;
+        // }
+
+
+
+
+// solution 2 -- failed some test cases
+    //   function scramble(str1, str2) {
+ 
+    //     str2 = str2.split('');
+        
+    //     let filteredStr = str2.filter((letter) => {
+    //         let regex = new RegExp(`${letter}`);
+    //         if( regex.test(str1) ) {
+    //             str1.replace(`/${letter}/`, '');
+    //             return true;
+    //         }
+    //     })
+
+    //     return filteredStr.length >= str2.length ? true : false;
+
+    // }
+
+//solution 3
+
+// solution 2 -- failed some test cases
+function scramble(str1, str2) {
+     
+        let i = 0;
+        let str2Clone = str2;
+        
+        while( i < str2.length ){
+
+        let regex = new RegExp(`${str2[i]}`);
+
+           if( regex.test(str1) ) {
+               
+                str1 = str1.replace(`${str2[i]}`, '$')
+                str2Clone = str2Clone.replace(`${str2[i]}`, '');
+
+           }
+            i++;
+            
+        }
+
+       console.log(str2Clone.length);
+     //  console.log(str1);
+      return str2Clone.length > 0 ? false : true;
+
+    }
+
+    // scramble('rkqodlw', 'world')// ==> True
+scramble('cedewaraaossoqqyt', 'codewars')// ==> True
+console.log(scramble('katassss', 'steak'))
+scramble('kataaaas', 'steak')// ==> False
+    </script>
+</body>
+</html>
