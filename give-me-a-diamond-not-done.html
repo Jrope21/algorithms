@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Jamie is a programmer, and James' girlfriend. She likes diamonds, and wants a diamond string from James.
+        //  Since James doesn't know how to make this happen, he needs your help. 
+         
+        //  Task
+
+        // You need to return a string that looks like a diamond shape when printed on the screen,
+        // using asterisk (*) characters. Trailing spaces should be removed, and every line must be terminated with a newline character (\n).
+
+        // Return null/nil/None/... if the input is an even number or negative, as it is not possible to print a diamond of even or negative size.
+
+
+
+        //1ST SOLUTION
+
+        function diamond(n){
+            if(n < 0 || n % 3){
+                return null;
+            }
+            
+            let numList = new Array(n).fill().map((num, i) => {
+                i = i + 1;
+
+                if(i % 2) {
+                    diam = '*'.repeat(i);
+                    diam += '/n'
+                    return diam;
+                }
+
+                return '';
+            });
+
+            return numList.join('');
+        }
+
+       diamond(3)
+
+        //2ND SOLUTION --- much faster (this doesn't mean that it is better)
+
+        function diamond(n) {
+            if(n <= 0 || n & 2){
+                return null;
+            }
+
+            let diam = '';
+            let toggle = true;
+            let i = 1;
+            
+            while (i > 0){              
+                let space = ' '
+
+                if(i % 2) {
+                    diam += space.repeat(mark) + '*'.repeat(i) + `\\n `
+                }
+
+                if(i === n) toggle = false;
+                toggle ? i++ : i--;
+            }
+
+            return diam;
+        }
+
+        diamond(5)
+        console.log(diamond(5))
+       // diamond(3)
+        // Test.describe( "diamond()", function(){
+
+        // Test.assertEquals(diamond(1), "*\n")
+        // Test.assertEquals(diamond(3), " *\n***\n *\n")
+        // Test.assertEquals(diamond(5), "  *\n ***\n*****\n ***\n  *\n")
+        // Test.assertEquals(diamond(2), null)
+        // Test.assertEquals(diamond(-3), null)
+        // Test.assertEquals(diamond(0), null)
+        // });
+    </script>
+</body>
+</html>
