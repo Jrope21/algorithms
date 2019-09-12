@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        
+
+        function validParentheses(parens){
+        //TODO 
+        //count number of open brackets not closed
+        let stack = 0;
+        let token = true;
+        parens = parens.split('')
+        
+                parens.forEach( item => {
+
+                    if(item === '('){
+                        stack++;
+                    }
+                    if(item === ')' && stack < 1){ //if no open brackets to close - return false
+                        token = false;
+                    }
+                    if(item === ')'){  
+                        stack--;
+                    }
+                    
+                }) 
+           
+           //if any brackets weren't closed - return false
+            return stack > 0 ? false : token;
+        }
+
+        console.log(validParentheses('())(()'))
+        console.log(validParentheses('()()()'))
+        console.log(validParentheses('()()()()(()()()())()()(())((())())'))
+        console.log(validParentheses('()()()()()()()(())()()()()()()(())(()('))
+        // validParentheses(')(')
+        
+    </script>
+
+</body>
+</html>
