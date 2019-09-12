@@ -54,15 +54,17 @@
             let diam = '';
             let toggle = true;
             let i = 1;
-            
+            let j = (n - 1) / 2;
             while (i > 0){              
                 let space = ' '
+                if(i === n) toggle = false;
 
                 if(i % 2) {
-                    diam += space.repeat(mark) + '*'.repeat(i) + `\\n `
+                    diam += space.repeat(j) + '*'.repeat(i) + `\\n `
+                    toggle ? j-- : j++;                 
                 }
 
-                if(i === n) toggle = false;
+               
                 toggle ? i++ : i--;
             }
 
