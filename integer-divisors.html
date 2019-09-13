@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+
+
+
+
+
+
+String.prototype.camelCase=function(){
+  //your code here
+  let str = this.split('');
+  let newStr = str.map((word) => {
+      word.replace(/^\w/, e => e.toUpperCase)
+  })
+
+  return newStr.join('');
+}
+
+console.log("camel case method".camelCase())
+
+//         Divisors of 42 are : 1, 2, 3, 6, 7, 14, 21, 42.
+//          These divisors squared are: 1, 4, 9, 36, 49, 196, 441, 1764. The sum of the squared divisors is 2500 which is 50 * 50, a square!
+
+// Given two integers m, n (1 <= m <= n) we want to find all integers between 
+// m and n whose sum of squared divisors is itself a square. 42 is such a number.
+
+// The result will be an array of arrays or of tuples (in C an array of Pair) or a string,
+//  each subarray having two elements, first the number whose squared divisors is a square and then the sum of the squared divisors.
+
+//Solution 1 - to slow, this needs to get refactored
+
+function listSquared(m, n){
+    let squaredDivisors = [];
+    if(m === 1) squaredDivisors = [[1, 1]];
+
+    function findDivisors(num){
+        let divisors = [];
+
+        let maxCount = Math.ceil(num / 2);
+        let i = 1;
+        while (i < maxCount) { // setup divisors for potential numbers
+
+            if(Number.isInteger(num / i)){
+                
+                if(!divisors.includes(i)) divisors.push(i)
+                if(!divisors.includes((num / i))) divisors.push(num / i)
+                maxCount = num / i;
+                
+            }
+            
+            i++;
+        }
+        return divisors;
+    }
+
+    function checkSquared(divis, initNum){ //
+        if(divis.length < 1) return;
+        let totalSum = divis.map(num => Math.pow(num, 2)).reduce((a, b) => {
+           return a + b;
+        })
+        const squareRoot = Math.sqrt(totalSum);
+        if(squareRoot * squareRoot === totalSum && Number.isInteger(squareRoot)){
+            squaredDivisors.push([initNum, totalSum])
+        }
+    }
+
+    let j = m;
+    while (j < n){
+        checkSquared(findDivisors(j), j)
+        j++;
+    }
+
+    return squaredDivisors
+}
+
+
+
+// listSquared(1, 5)
+listSquared(250, 500)
+
+// Test.describe("Basic tests",function() {
+// Test.assertSimilar(listSquared(1, 250), [[1, 1], [42, 2500], [246, 84100]])
+// Test.assertSimilar(listSquared(42, 250), [[42, 2500], [246, 84100]])
+// Test.assertSimilar(listSquared(250, 500), [[287, 84100]])
+
+// })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>
