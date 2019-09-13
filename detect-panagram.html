@@ -15,7 +15,8 @@
         // Given a string, detect whether or not it is a pangram.
         // Return True if it is, False if not. Ignore numbers and punctuation.
 
-        // part of solution 1 -- iterative
+
+        // part of solution 1 -- iterative: would have been to long
         // function isPangram(string){
         //  //...
         // let alphabet = 'abcdefghijklmnopqrstuvwxyz';
@@ -27,25 +28,24 @@
         // let i = 0;
         //     while(foundMatch === false && i < 50){
         //     if(alphabet[i] == letter){
-                
+
         //     }
         //     i++;
         //     }
         // })
         // }
 
+
         //solution 2 regex
         function isPangram(string){
 
             let alphabet = 'abcdefghijklmnopqrstuvwxyz';
             alphabet = alphabet.split('');
-        
-            // string = string.split('');
             
             let lettersNotFound = alphabet.filter((letter) => {
                 return !RegExp(string, 'i').test(string)
             })
-            console.log(lettersNotFound)
+
             return lettersNotFound.length > 0 ? false : true;
 
         }
