@@ -55,7 +55,7 @@ function dirReduc(arr){
 
   function reduce(directions){
         let newArr = []
-    //  console.log(directions)
+
         let token = true;
         for(let i = 0; i < directions.length; i++){
             if(pairs[directions[i]] === directions[i + 1]){
@@ -65,14 +65,12 @@ function dirReduc(arr){
                 newArr.push(directions[i])
             }
         }
-    //console.log(directions)
+
         if(token === false){
             reduce(newArr)
         } else {
             reducedDirections = directions
         }
-    //    
-       // return newArr;
   }
   
   reduce(arr)
@@ -88,6 +86,16 @@ console.log(dirReduc(["NORTH", "SOUTH", "SOUTH", "EAST", "WEST", "NORTH", "WEST"
 // Test.assertSimilar(dirReduc(["NORTH", "SOUTH", "SOUTH", "EAST", "WEST", "NORTH", "WEST"]), ["WEST"])
 // Test.assertSimilar(dirReduc(["NORTH", "WEST", "SOUTH", "EAST"]), ["NORTH", "WEST", "SOUTH", "EAST"])
 // Test.assertSimilar(dirReduc(["NORTH", "SOUTH", "EAST", "WEST", "EAST", "WEST"]), [])
+
+
+
+// not my code!!! thought it was a clever solution though
+
+// function dirReduc(arr) {
+//   var str = arr.join(''), pattern = /NORTHSOUTH|EASTWEST|SOUTHNORTH|WESTEAST/;
+//   while (pattern.test(str)) str = str.replace(pattern,'');
+//   return str.match(/(NORTH|SOUTH|EAST|WEST)/g)||[];
+// }
     </script>
 </body>
 </html>

@@ -12,21 +12,6 @@
 
 
 
-
-
-
-String.prototype.camelCase=function(){
-  //your code here
-  let str = this.split('');
-  let newStr = str.map((word) => {
-      word.replace(/^\w/, e => e.toUpperCase)
-  })
-
-  return newStr.join('');
-}
-
-console.log("camel case method".camelCase())
-
 //         Divisors of 42 are : 1, 2, 3, 6, 7, 14, 21, 42.
 //          These divisors squared are: 1, 4, 9, 36, 49, 196, 441, 1764. The sum of the squared divisors is 2500 which is 50 * 50, a square!
 
