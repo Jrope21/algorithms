@@ -23,7 +23,6 @@
 
 
 function solution(list){
- // TODO: complete solution 
  //loop through list
  //loop through next items until it isn't incrementing by 1
  //if it is greater than 3 push the range to new array
@@ -31,32 +30,29 @@ function solution(list){
 
     for (let i = 0; i < list.length; i++) {
         let token = true;
-        let j = i + 1;
-        let count = 1;
-
+        let foundRange = false;
+        let count = 0;
+        let singleRange = []
         while (token) {
-            if(list[i + count] !== list[i] + count){
-                if(count >= 3){             
-                    console.log('original', list[i])
-                    console.log('range-y', list[i + count])
-                    rangeList.push(`${list[i]}-${list[i + count]}`);
-                    i += count - 1;
-                   
-                } else{
-                    rangeList.push(list[i]);
-                    //token = false;
-                }
-                 token = false;
-            } 
-
-
+            
+            if(list[i] + count === list[i + count] ){
+                singleRange.push(list[i + count]);
+            } else if (count >= 3) {
+                i += count - 1;
+                foundRange = true;
+                token = false;
+            } else {
+                token = false;
+            }
+        
             count++;
         } 
-
-        
+    
+        if(foundRange) rangeList.push(`${singleRange[0]}-${singleRange[singleRange.length - 1]}`);
+        else rangeList.push(list[i]);
     }
 
-    console.log(rangeList)
+    console.log(rangeList.join(','))
 }
 
 solution([-6, -3, -2, -1, 0, 1, 3, 4, 5, 7, 8, 9, 10, 11, 14, 15, 17, 18, 19, 20]);
