@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    
+//   Given an array X of positive integers, its elements are to be transformed
+// by running the following operation on them as many times as required:
+
+// if X[i] > X[j] then X[i] = X[i] - X[j]
+
+// When no more transformations are possible, return its sum ("smallest possible sum").
+
+// For instance, the successive transformation of the elements of input X = [6, 9, 21] is detailed below:
+
+// X_1 = [6, 9, 12] # -> X_1[2] = X[2] - X[1] = 21 - 9
+// X_2 = [6, 9, 6]  # -> X_2[2] = X_1[2] - X_1[0] = 12 - 6
+// X_3 = [6, 3, 6]  # -> X_3[1] = X_2[1] - X_2[0] = 9 - 6
+// X_4 = [6, 3, 3]  # -> X_4[2] = X_3[2] - X_3[1] = 6 - 3
+// X_5 = [3, 3, 3]  # -> X_5[1] = X_4[0] - X_4[1] = 6 - 3
+// The returning output is the sum of the final transformation (here 9).
+
+// Example
+
+// solution([6, 9, 21]) #-> 9
+    
+    
+// function solution(numbers) { // times out on high call stacks 30000+\
+//   let foundNum = false;
+//   function checkSums(nums){
+//     let count = 0;
+//     for(let i = 0; i < nums.length; i++){
+    
+//        for(let j = 0; j < 3; j++){
+//          if(nums[i] > nums[j]){
+//             nums[i] = nums[i] - nums[j]
+//             count++;
+//           } 
+//        }
+
+//     }
+
+//     if(count > 0) checkSums(nums);
+//   }
+//   checkSums(numbers)
+ 
+//   return numbers.reduce((a, b) => a + b);
+// }
+    
+// console.log(solution([6,9,21]))
+//   Test.describe('Example test', function() {
+//   Test.assertEquals(solution([6,9,21]),9);
+// });  
+    
+
+
+
+function solution(numbers) {
+    let foundNum = false;   
+    // numbers = numbers.sort()
+    let prevNum;
+    while(foundNum === false){
+    let count = 0;
+    prevNum = Math.Max(...numbers) / Math.min(...numbers) 
+        for(let i = numbers.length - 1; i >= 0; i--){
+          
+        }
+        if(count === 0) foundNum = true;
+ 
+  return Math.min(...numbers) * numbers.length;
+}
+    //expected 89
+console.log(solution([205209, 91809, 2601, 123201, 26244, 199809, 225625, 28561, 52900, 236196, 21316, 196249, 244036, 241081, 40804, 12544, 7569, 8836, 12769, 4096, 145924, 104976, 3969, 175561, 7056, 41209, 106276, 213444, 108241, 44100, 172225, 211600, 13225, 7744, 4900, 69696, 37636, 30625, 3721, 4096, 87616, 81796, 46656, 152100, 43681, 12996, 224676, 38809, 235225, 74529, 144400, 193600, 221841, 11664, 70225, 204304, 59536, 23409, 201601, 12321, 8836, 21025, 22500, 191844, 62001, 20449, 227529, 3600, 69696, 2704, 108241, 51984, 155236, 168100, 93025, 78400, 63001, 121104, 158404, 75076, 152100, 222784, 51529, 121801, 194481, 24025, 22500, 188356, 143641]))
+    </script>
+</body>
+</html>
