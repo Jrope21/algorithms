@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    
+    
+    
+// Create two functions to encode and then decode a string using the Rail Fence Cipher.
+//  This cipher is used to encode a string by placing each character
+//   successively in a diagonal along a set of "rails".
+//    First start off moving diagonally and down. When you reach the bottom,
+//     reverse direction and move diagonally and up until you reach the top rail.
+//      Continue until you reach the end of the string.
+//       Each "rail" is then read left to right to derive the encoded string. 
+//       You can optionally include or dis-include punctuation.
+
+// For example, the string "WEAREDISCOVEREDFLEEATONCE" could be represented
+//  in a three rail system as follows:
+
+// W       E       C       R       L       T       E
+//   E   R   D   S   O   E   E   F   E   A   O   C  
+//     A       I       V       D       E       N    
+// The encoded string would be:
+
+// WECRLTEERDSOEEFEAOCAIVDEN
+// Write a function/method that takes 2 arguments, a string and the number of rails,
+//  and returns the ENCODED string.
+
+// Write a second function/method that takes 2 arguments,
+//  an encoded string and the number of rails, and returns the DECODED string.
+
+// For both encoding and decoding, assume number of rails >= 2 
+// and that passing an empty string will return an empty string.
+
+// Note that the example above excludes the punctuation and spaces just for simplicity.
+//  There are, however, tests that include punctuation. 
+//  Don't filter out the punctuation as they are a part of the string.
+    
+function encodeRailFenceCipher(string, numberRails) {
+  // code
+    let rails = new Array(numberRails).fill().map((a)=>{ return []});
+
+    string = string.split('');
+    function setUpPos(){
+        let railSelect = 0;
+        let i = 0;
+        let toggle = false;
+        while(i < string.length){
+
+            rails[railSelect].push(string[i])
+        
+            if(railSelect === rails.length - 1){
+                toggle = true;
+            } else if (railSelect === 0) {
+                toggle = false;
+            }
+
+            toggle ? railSelect-- : railSelect++;
+            i++;
+        }
+    }
+    setUpPos()
+
+    //codewars / node doesn't support .flat()
+    let flatArray = [];
+    for(let i = 0; i < rails.length; i++){
+        for(let j = 0; j < rails[i].length; j++){
+            flatArray.push(rails[i][j])
+        }
+    }
+
+    return flatArray.join('');
+}
+
+function decodeRailFenceCipher(string, numberRails) {
+  // code
+  let rails = new Array(numberRails).fill().map((a)=>{ return 0});
+  string = string.split('');
+    function setUpPos(){ //count numbers in each rail
+        let railSelect = 0;
+        let i = 0;
+        let toggle = false;
+        while(i < string.length){
+
+            rails[railSelect] += 1
+        
+            if(railSelect === rails.length - 1){
+                toggle = true;
+            } else if (railSelect === 0) {
+                toggle = false;
+            }
+
+            toggle ? railSelect-- : railSelect++;
+            i++;
+        }
+    }
+    setUpPos()
+
+    let railLetters = []
+
+    function setUpRails(){ //format array of original rails
+        let sliceCount = 0;
+        for(let i = 0; i < rails.length; i++){
+            railLetters.push(string.slice(sliceCount, sliceCount + rails[i]))
+            sliceCount += rails[i];
+        }
+    }
+    setUpRails();
+    let str = ``
+    function generateString(){
+        let railSelect = 0;
+        let i = 0;
+        let toggle = false;
+        while(i < string.length){
+
+            str += railLetters[railSelect][0]
+            railLetters[railSelect].shift();
+            if(railSelect === rails.length - 1){
+                toggle = true;
+            } else if (railSelect === 0) {
+                toggle = false;
+            }
+
+            toggle ? railSelect-- : railSelect++;
+            i++;
+        }
+    }
+    
+    generateString();
+
+    return str;
+}
+
+encodeRailFenceCipher("WEAREDISCOVEREDFLEEATONCE", 3)
+decodeRailFenceCipher("WECRLTEERDSOEEFEAOCAIVDEN", 3)
+// WECRLTEERDSOEEFEAOCAIVDEN
+// Test.assertEquals(encodeRailFenceCipher("WEAREDISCOVEREDFLEEATONCE", 3), "WECRLTEERDSOEEFEAOCAIVDEN");
+// Test.assertEquals(decodeRailFenceCipher("WECRLTEERDSOEEFEAOCAIVDEN", 3), "WEAREDISCOVEREDFLEEATONCE");
+// Test.assertEquals(encodeRailFenceCipher("Hello, World!", 3), "Hoo!el,Wrdl l");
+    
+    </script>
+</body>
+</html>
