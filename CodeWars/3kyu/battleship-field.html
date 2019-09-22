@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    
+//     Write a method that takes a field for well-known board game "Battleship" as 
+// an argument and returns true if it has a valid disposition of ships, false otherwise. 
+// Argument is guaranteed to be 10*10 two-dimension array. Elements in the array are numbers,
+//  0 if the cell is free and 1 if occupied by ship.
+
+// Battleship (also Battleships or Sea Battle) is a guessing game for two players.
+//  Each player has a 10x10 grid containing several "ships" and objective is to destroy enemy's
+//   forces by targetting individual cells on his field. The ship occupies one or more cells in the grid.
+//    Size and number of ships may differ from version to version. In this kata we will use Soviet/Russian version of the game.
+
+
+// Before the game begins, players set up the board and place the ships accordingly to the following rules:
+// There must be single battleship (size of 4 cells), 2 cruisers (size 3),
+//  3 destroyers (size 2) and 4 submarines (size 1). Any additional ships are not allowed, as well as missing ships.
+// Each ship must be a straight line, except for submarines, which are just single cell.
+
+// The ship cannot overlap or be in contact with any other ship, neither by edge nor by corner.
+
+// This is all you need to solve this kata. If you're interested in more information about the game, visit this link.  
+
+// function validateBattlefield(field) {
+//   // write your magic here
+//   let isValid = false;
+//   let shipCounts = [];
+
+//     for(let i = 0; i < field.length; i++){
+//       for(let x = 0; x < field[i].length; x++){
+//         if(field[i][x] === 1 && field[i][x + 1] === 1 && field[i][x] === 1 && field[i + 1][x] === 1){
+//             // isValid = false;
+//             shipCounts.push(10)
+//         }
+//         if(field[i][x] === 1 && field[i][x + 1] === 1){
+//             field[i][x] = 2;
+//             field[i][x + 1] = 2;
+//             let squaresAbove = field[i][x - 1] + field[i][x] + field[i][x + 1]
+//             let squaresBelow = field[i + 1][x - 1] + field[i + 1][x] + field[i + 1][x + 1]
+//             console.log(squaresBelow)
+            
+//             // i === 0 ? checker = field[i + 1][x + 1] : checker = field[i - 1][x];
+//             if(squaresAbove + squaresBelow !== 0){
+//                 shipCounts.push(10)
+//             }
+//             let toggle = true;
+//             let count = 2;
+//             let findShip = x + 2;
+//             while(toggle){
+//                 if(field[i][findShip] === 0){
+//                     toggle = false
+//                     x = findShip
+//                 } else {
+//                     //setting empty value for ints checked
+//                     field[i][findShip] = 2;
+//                     console.log(i, findShip)
+//                     if(field[i - 1][findShip] === 1 || field[i + 1][findShip] === 1){
+//                         shipCounts.push(10)
+//                     } 
+//                     findShip++;
+//                     count++;
+//                 }  
+//             }
+//             shipCounts.push(count);
+//         } else if (field[i][x] === 1 && field[i + 1][x] === 1){
+//             field[i][x] = 2
+//             field[i + 1][x] = 2
+//             let checker;
+//             x === 0 ? checker = field[i + 1][x + 1] : checker = field[i][x - 1];
+//             if(checker === 1 || field[i][x + 1] === 1 || field[i + 1][x - 1] === 1){
+//                 shipCounts.push(10)
+//             }
+//             let toggle = true;
+//             let count = 2;
+//             let findShip = i + 2;
+//             while(toggle){
+//                 if(field[findShip][x] === 0){
+//                     toggle = false
+//                     x = findShip
+//                 } else {
+//                     field[findShip][x] = 2;
+//                     if(field[findShip][x + 1] === 1 || field[findShip][x - 1] === 1){
+//                         shipCounts.push(10)
+//                     }
+//                     findShip++;
+//                     count++;
+//                 }  
+//             }
+//             shipCounts.push(count);
+//         } else if (field[i][x] === 1){
+//             field[i][x] = 2;
+//             shipCounts.push(1)
+//         }
+
+//       }
+//     }
+
+
+//     let shipCheck = [1, 2, 3, 4];
+//     shipCounts.forEach((ship) => {
+//         if(ship === 4){
+//             shipCheck[0] -= 1;
+//         }
+//         else if(ship === 3){
+//             shipCheck[1] -= 1;
+//         }
+//         else if(ship === 2){
+//             shipCheck[2] -= 1;
+//         }
+//         else if(ship === 1){
+//             shipCheck[3] -= 1;
+//         }
+//     })
+
+//     let shipTotal = shipCheck.filter((ship) => {
+//         if (ship !== 0){
+//             return true;
+//         }
+//     });
+//     if (!shipTotal.length ) isValid = true;
+//     return isValid;
+// }
+
+
+
+function validateBattlefield(field) {
+    shipPositions = []
+    for(let i = 0; i < field.length; i++){
+        for(let j = 0; j < field[i].length; j++){
+            if(field[i][j] === 1){
+                shipPositions.push([i, j])
+            }
+        }
+    }
+    shipCounts = [];
+    console.log(shipPositions)
+    shipCounts.push('random shiz')
+    let toggle = false;
+    let count = 0;
+    for(let i = 0; i < shipPositions.length - 1; i++){
+        
+        if(shipPositions[i][1] + 1 === shipPositions[i + 1][1]){
+            toggle = true;
+        } 
+        // if(shipPositions[i][0] + 1 === shipPositions[i + 1][1]){
+        //     toggle = true;
+        // } 
+        if(toggle === true){
+            count++;
+        } else if(toggle === false){
+            shipCounts.push(count)
+            count = 0;
+        }
+        if(shipPositions[i][1] + 1 !== shipPositions[i + 1][1]){
+            toggle = false;
+        } 
+    }
+    console.log(shipCounts)
+}
+
+
+
+
+// console.log(validateBattlefield(
+//     [[1, 0, 0, 0, 0, 1, 1, 0, 0, 0],
+//                  [1, 0, 1, 0, 0, 0, 0, 0, 1, 0],
+//                  [1, 0, 1, 0, 1, 1, 1, 0, 1, 0],
+//                  [1, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+//                  [0, 0, 0, 0, 0, 0, 0, 0, 1, 0],
+//                  [0, 0, 0, 0, 1, 1, 1, 0, 0, 0],
+//                  [0, 0, 0, 0, 0, 0, 0, 0, 1, 0],
+//                  [0, 0, 0, 1, 0, 0, 0, 0, 0, 0],
+//                  [0, 0, 0, 0, 0, 0, 0, 1, 0, 0],
+//                  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]));
+
+
+// console.log(
+    validateBattlefield(
+ [[ 1, 0, 0, 0, 0, 1, 1, 0, 0, 0 ],
+  [ 1, 0, 1, 0, 0, 0, 0, 0, 1, 0 ],
+  [ 1, 0, 1, 0, 1, 1, 1, 0, 1, 0 ],
+  [ 1, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
+  [ 0, 0, 0, 0, 0, 0, 0, 0, 1, 0 ],
+  [ 0, 0, 0, 0, 1, 1, 1, 0, 0, 0 ],
+  [ 0, 0, 0, 1, 0, 0, 0, 0, 1, 0 ],
+  [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ],
+  [ 0, 0, 0, 0, 0, 0, 0, 1, 0, 0 ],
+  [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ] ]); // this should return false
+
+// )
+</script>
+</body>
+</html>
