@@ -64,11 +64,21 @@ LinkedList.prototype.printList = function(){
     }
 }
 
+LinkedList.prototype.findIndex = function(i) {
+    let counter = 0;
+    let current = this.head;
+    while(counter < i){
+        current = current.next;
+        counter++
+    }
+
+    return current;
+}
 // function printList() {
     
 
 // }
-
+console.log(startList.findIndex(4));
 startList.printList();
 </script>
 </body>
