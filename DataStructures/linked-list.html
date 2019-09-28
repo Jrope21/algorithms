@@ -34,14 +34,26 @@ LinkedList.prototype.insertStart = function(data) {
     this.head = newNode;
 }
 
-// LinkedList.prototype.insertEnd = function(data) {
-//     let newNode = new Node(data);
-//     newNode.next = 
-// }
+LinkedList.prototype.insertEnd = function(data) {
+    let newNode = new Node(data);
+    
+    if(!this.head){
+        this.head = newNode;
+    } else {
+        let current = this.head;
+
+        while(current.next){
+            current = current.next;
+        }
+
+        current.next = newNode;
+    }
+}
+
 startList.insertStart(100);
 startList.insertStart(100);
 startList.insertStart(300);
-
+startList.insertEnd(500)
 console.log(startList)
 
 LinkedList.prototype.printList = function(){
