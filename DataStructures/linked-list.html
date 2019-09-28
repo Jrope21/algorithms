@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+
+
+
+class Node {
+    constructor (data, next = null){
+        this.data = data,
+        this.next = next
+    }
+}
+
+class LinkedList {
+    constructor (){
+        this.head = null;
+    }
+}
+
+
+let startList = new LinkedList();
+
+//insert first node
+LinkedList.prototype.insertStart = function(data) {
+    let newNode = new Node(data);
+    newNode.next = this.head;
+    this.head = newNode;
+}
+
+// LinkedList.prototype.insertEnd = function(data) {
+//     let newNode = new Node(data);
+//     newNode.next = 
+// }
+startList.insertStart(100);
+startList.insertStart(100);
+startList.insertStart(300);
+
+console.log(startList)
+
+LinkedList.prototype.printList = function(){
+    let current = this.head;
+    while (current) {
+        console.log(current.data);
+        current = current.next
+    }
+}
+
+// function printList() {
+    
+
+// }
+
+startList.printList();
+</script>
+</body>
+</html>
