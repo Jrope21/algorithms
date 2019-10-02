@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+<script>
+
+
+
+var majorityElement = function(nums) {
+    let counts = {};
+    let majorityEls = [];
+    let goalNum = nums.length / 3;
+
+    for(let i = 0; i < nums.length; i++){
+        counts[nums[i]] ? counts[nums[i]] += 1 : counts[nums[i]] = 1;
+        if(counts[nums[i]] > goalNum && !majorityEls.includes(nums[i])){
+            majorityEls.push(nums[i]);
+        }
+    }
+    
+    return majorityEls
+};
+majorityElement([1,1,1,3,3,2,2,2]);
+
+</script>
+
+
+</body>
+</html>
