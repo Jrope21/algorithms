@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    
+    
+    
+    
+    
+var majorityElement = function(nums) {
+    let counts = {}
+
+    let majorityEl;
+    let goalCount = nums.length / 2;
+
+    for(let i = 0; i < nums.length; i++){
+        
+        if(counts[nums[i]]){
+            counts[nums[i]] = counts[nums[i]] + 1;
+        } else {
+            counts[nums[i]] = 1;
+        }
+        if(counts[nums[i]] > goalCount){
+            majorityEl = nums[i];
+        }
+    }
+    console.log(majorityEl)
+};
+    
+    
+    majorityElement(
+[3,2,3]);
+    
+    
+    
+    </script>
+</body>
+</html>

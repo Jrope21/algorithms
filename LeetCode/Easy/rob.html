@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+
+
+<script>
+
+var rob = function(nums) {
+    if(!nums.length){
+        return 0;
+    }
+    if(nums.length < 2){
+        return nums[0];
+    }
+    let sumOne = 0;
+    let sumTwo = 0;
+    
+    sumOne += nums[0];
+    sumTwo += nums[1];
+    
+    for(let i = 2; i < nums.length; i++){
+        if(!(i % 2)){
+            sumOne += nums[i]
+        } else {
+            sumTwo += nums[i]
+        }
+    }
+    console.log(sumOne)
+    
+    return sumOne > sumTwo ? sumOne : sumTwo;
+}; 
+
+rob([0])
+
+console.log(rob([0]))
+
+</script>
+
+
+</body>
+</html>
