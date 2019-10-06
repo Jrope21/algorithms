@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+//brute force solutiong daw
+
+    var maxProfit = function(prices) {
+        //on each loop find the greatest difference between numbers 
+        let differences = [0, 0];
+        for(let i = 0; i < prices.length; i++){   
+            for(let x = i; x < prices.length; x++){
+                const storedDifferenceValue = differences[1] - differences[0];
+                const currentDifferenceValue = prices[x] - prices[i];
+                if (currentDifferenceValue > storedDifferenceValue){
+                    // console.log([prices[i], ]);
+                    differences = [prices[i], prices[x]]
+                }
+            }
+        }
+        return differences[1] - differences[0];
+    };    
+
+    maxProfit([7,1,5,3,6,4])
+    console.log(maxProfit([7,1,5,3,6,4]))
+    </script>
+</body>
+</html>

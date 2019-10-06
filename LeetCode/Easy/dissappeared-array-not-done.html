@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        
+        
+        
+        
+        var findDisappearedNumbers = function(nums) {
+            let arrFilter = new Array(nums.length).fill(true);
+            console.log(arrFilter)
+            nums.forEach((num) => {
+                console.log(num)
+                arrFilter[num] = false;
+            })
+
+            let missingNums = [];
+            
+            arrFilter.forEach((num, i) => {
+                if(num === true) {
+                    missingNums.push(i);
+                }
+            })
+            console.log(arrFilter)
+            console.log(missingNums)
+            return missingNums
+        };   
+        
+       
+findDisappearedNumbers([1,1]);
+        
+    </script>
+</body>
+</html>
