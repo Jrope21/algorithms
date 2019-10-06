@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        
+        
+        var mergeTwoLists = function(l1, l2) {
+    let datas = [];
+    
+   if (l1 == null && l2 == null){
+       return l1;
+   }
+    
+    class ListNode {
+        constructor(data, next = null){
+            this.val = data,
+            this.next = next
+        }
+    }
+    
+    //get all data values and set in data array;
+    function getDataValues(list){
+       let current = list;
+        while(current){
+            datas.push(current.val)
+            current = current.next;
+            
+        }
+    }
+    
+    getDataValues(l1);
+    getDataValues(l2);
+    
+    let mergeList = new ListNode();
+    if (datas.length < 1){
+        return [];
+    }
+    datas.sort((a,b) => a - b)
+    
+    datas.forEach((num) => {
+        if(!mergeList.val){
+            mergeList = new ListNode(num)
+        }
+        else{
+            let current = mergeList;
+            while(current.next){
+                current = current.next;
+
+            }
+            let node = new ListNode(num)
+            current.next = node;
+        }
+    })
+ 
+    return mergeList;
+};        
+        
+        
+        
+</script>
+</body>
+</html>
