@@ -9,31 +9,56 @@
 <body>
     <script>
         
-        
+        //use frequency counters (0n) instead of nested loops (0n2)
+        //My first solution
+        // function validAnagram(s1, s2){
+        //     if(s1.length !== s2.length) return false;
+
+        //     let frequencyOne = {};
+        //     let frequencyTwo = {};
+        //     for(let i = 0; i < s1.length; i++){
+        //         frequencyOne[s1[i]] ? frequencyOne[s1[i]] += 1 : frequencyOne[s1[i]] = 1;
+        //     }
+        //     for(let i = 0; i < s2.length; i++){
+        //         frequencyTwo[s2[i]] ? frequencyTwo[s2[i]] += 1 : frequencyTwo[s2[i]] = 1;
+        //     }
+           
+        //     for(const key of Object.keys(frequencyOne)){
+        //        if(frequencyOne[key] !== frequencyTwo[key]){
+        //            return false;
+        //        }
+        //     }
+        //     return true;
+        // // add whatever parameters you deem necessary - good luck!
+        // }
+
+        //2nd after looking at instructor code
+
         function validAnagram(s1, s2){
             if(s1.length !== s2.length) return false;
 
             let frequencyOne = {};
-            let frequencyTwo = {};
+
             for(let i = 0; i < s1.length; i++){
                 frequencyOne[s1[i]] ? frequencyOne[s1[i]] += 1 : frequencyOne[s1[i]] = 1;
             }
             for(let i = 0; i < s2.length; i++){
-                frequencyTwo[s2[i]] ? frequencyTwo[s2[i]] += 1 : frequencyTwo[s2[i]] = 1;
+                if(!frequencyOne[s2]){
+                    return false;
+                }
+                frequencyOne[s2] -= 1;
+                if(frequencyOne[s2] < 0){
+                    return false;
+                }
+                
             }
            
-            for(const key of Object.keys(frequencyOne)){
-                console.log(frequencyTwo)
-               if(frequencyOne[key] !== frequencyTwo[key]){
-                   return false;
-               }
-            //    if(!frequencyTwo[key]){
-            //        return false;
-            //    }
-            }
+           
             return true;
         // add whatever parameters you deem necessary - good luck!
         }
+
+
         console.log(validAnagram([1,2,3,4], [1,2,3,5]));
         validAnagram([1,2,3,4], [1,2,3,5]);
         
