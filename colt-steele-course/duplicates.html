@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        
+        function areThereDuplicates(...args) {
+            
+            console.log(args)
+            // good luck. (supply any arguments you deem necessary.)
+            let freqCount = {};
+            
+            for(let i = 0; i < args.length; i++){
+                if(freqCount[args[i]]){
+                    return true;
+                } else {
+                    freqCount[args[i]] = 1;
+                }
+            }
+            return false;
+        }    
+        
+        areThereDuplicates(1,2,3,3,4,1)
+    </script>
+</body>
+</html>
