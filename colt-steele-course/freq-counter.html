@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        
+        
+        function sameFrequency(s1, s2){
+           s1 = s1.toString()
+            s2 = s2.toString()
+if(s1.length !== s2.length) return false;
+  // good luck. Add any arguments you deem necessary.
+  let freqCounter = {}
+  
+  for(let i = 0; i < s1.length; i++){
+      freqCounter[s1[i]] ? freqCounter[s1[i]] += 1 : freqCounter[s1[i]] = 1;
+  }
+  console.log(s1)
+  for(let i = 0; i < s2.length; i++){
+      //console.log(s2[i])
+      if(!freqCounter[s2[i]]){
+         return false
+      } else {
+         freqCounter[s2[i]] -= 1
+      }
+      if(freqCounter[s2[i]] < 0){
+          return false;
+      }
+  }
+  return true;
+}
+
+sameFrequency(143,123);
+        
+       console.log(sameFrequency(143,123)) 
+        
+    </script>
+</body>
+</html>
