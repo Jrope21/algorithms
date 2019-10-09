@@ -9,23 +9,27 @@
 <body>
     <script>
         
+        // function areThereDuplicates(...args) {
+        //     // good luck. (supply any arguments you deem necessary.)
+        //     let freqCount = {};
+            
+        //     for(let i = 0; i < args.length; i++){
+        //         if(freqCount[args[i]]){
+        //             return true;
+        //         } else {
+        //             freqCount[args[i]] = 1;
+        //         }
+        //     }
+        //     return false;
+        // }    
+
         function areThereDuplicates(...args) {
-            
-            console.log(args)
             // good luck. (supply any arguments you deem necessary.)
-            let freqCount = {};
-            
-            for(let i = 0; i < args.length; i++){
-                if(freqCount[args[i]]){
-                    return true;
-                } else {
-                    freqCount[args[i]] = 1;
-                }
-            }
-            return false;
-        }    
+            return new Set(args).size !== args.length;
+        }  
         
         areThereDuplicates(1,2,3,3,4,1)
+        console.log(areThereDuplicates(1,2,3,3,4,1))
     </script>
 </body>
 </html>
