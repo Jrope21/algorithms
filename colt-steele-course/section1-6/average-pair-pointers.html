@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    
+    
+    function averagePair(arr, target){
+        // add whatever parameters you deem necessary - good luck!
+        let pairs = [];
+        
+        let left = 0;
+        let right = arr.length - 1;
+        while (left < right){
+            let tempAverage = (arr[left] + arr[right]) / 2;
+            if (tempAverage === target){
+                pairs.push([arr[left], arr[right]]);
+                arr[right] === arr[right - 1] ? right-- : left++;
+            }
+            if(tempAverage > target){
+                right--;
+            } else if(tempAverage < target){
+                left++;
+            }
+            
+        }
+        return pairs.length ? true : false;
+    }
+    
+    
+    </script>
+</body>
+</html>
