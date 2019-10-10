@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    
+    
+    function maxSubarraySum(arr, num){
+        // add whatever parameters you deem necessary - good luck!
+        if(arr.length > num) return null
+        let i = 0;
+        let j = num - 1;
+        
+        let maxSum = 0;
+        let tempSum = 0;
+        
+        for(let i = 0; i <= j; i++){
+            tempSum += arr[i];
+        }
+
+        while(j < arr.length){
+            if(tempSum > maxSum) maxSum = tempSum;
+            tempSum -= arr[i];
+            i++;
+            j++;
+            tempSum += arr[j];
+        }
+ 
+        return maxSum;
+    }
+    
+    maxSubarraySum([1, 4, 2, 10, 23, 3, 1, 0, 1, 0, 20], 4);
+
+    
+    </script>
+</body>
+</html>
