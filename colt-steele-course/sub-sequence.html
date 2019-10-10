@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+     
+     function isSubsequence(sub, s) {
+        // good luck. Add any arguments you deem necessary.
+        let subI = 0;
+        let i = 0;
+        while (i < s.length){
+            if(s[i] === sub[subI]){
+                subI++;
+            }
+            i++;
+        }
+        if(subI > sub.length - 1) return true;
+        return false;
+    }
+
+    isSubsequence('abc', 'abracadabra');
+    console.log(isSubsequence('abc', 'abracadabra'))
+    </script>
+</body>
+</html>
