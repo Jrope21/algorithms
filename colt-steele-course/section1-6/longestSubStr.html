@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    
+    
+    
+    function findLongestSubstring(str){
+        // add whatever parameters you deem necessary - good luck!
+        let longestString = 0;
+        
+        let i = 0;
+        let j = 0;
+        
+        let tempCharacters = {};
+        
+        while(i < str.length){
+            if(str[j] == undefined){
+                j--;
+            }
+            if(!tempCharacters[str[j]]){
+                tempCharacters[str[j]] = 1;
+                console.log(str[j], tempCharacters)
+                j++;
+            } else if (Object.keys(tempCharacters).length > longestString) {
+                console.log(tempCharacters)
+                console.log(Object.keys(tempCharacters).length)
+                longestString = Object.keys(tempCharacters).length;
+                i++;
+                j = i; 
+                tempCharacters = {};
+            } else {
+                i++;
+                j = i;
+                tempCharacters = {};
+            }
+        }
+        console.log(longestString)
+        return longestString;
+    }
+
+    findLongestSubstring('thisishowwedoit');
+    
+    </script>
+</body>
+</html>
