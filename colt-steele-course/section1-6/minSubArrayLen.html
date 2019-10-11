@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    
+    function minSubArrayLen(arr, tar) {
+        let shortestLength = Infinity;
+        
+        let i = 0;
+        let j = 1;
+        
+        let tempSum = arr[i];
+        
+        while(j <= arr.length){
+            let length = j - i
+            if(tempSum >= tar){
+                if(length < shortestLength){
+                    shortestLength = length;
+                }
+                
+                if(length === 1) return 1;
+                
+                i++;
+                tempSum = arr[i]
+                j = i + 1;
+            } else {
+            tempSum += arr[j];
+            j++;
+            }
+            
+        }
+        console.log(shortestLength)
+        return shortestLength;
+    }
+    
+    minSubArrayLen([2,3,1,2,4,3], 7)
+    
+    </script>
+</body>
+</html>
