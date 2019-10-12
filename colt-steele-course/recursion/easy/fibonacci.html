@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        
+    function fib(num){
+        let fibs = [1, 1];
+        let count = 0;
+        function fibFind(fibFirst, fibLast){
+            if(fibs.length >= num) return;
+            fibs.push(fibFirst + fibLast);
+            fibFind(fibs[fibs.length - 1], fibs[fibs.length - 2] )
+        }
+        fibFind(fibs[fibs.length - 1], fibs[fibs.length - 2])
+
+        return fibs[num - 1];
+    }
+        
+    console.log(fib(4))
+        
+    </script>
+</body>
+</html>
