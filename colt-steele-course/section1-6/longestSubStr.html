@@ -26,11 +26,8 @@
             }
             if(!tempCharacters[str[j]]){
                 tempCharacters[str[j]] = 1;
-                console.log(str[j], tempCharacters)
                 j++;
             } else if (Object.keys(tempCharacters).length > longestString) {
-                console.log(tempCharacters)
-                console.log(Object.keys(tempCharacters).length)
                 longestString = Object.keys(tempCharacters).length;
                 i++;
                 j = i; 
@@ -41,7 +38,7 @@
                 tempCharacters = {};
             }
         }
-        console.log(longestString)
+
         return longestString;
     }
 

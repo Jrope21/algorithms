@@ -35,8 +35,8 @@
             }
             
         }
-        console.log(shortestLength)
-        return shortestLength;
+        //return 0 if no results found
+        return shortestLength >= Infinity ? 0 : shortestLength;
     }
     
     minSubArrayLen([2,3,1,2,4,3], 7)
