@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+ <script>
+
+
+// Given an array nums of n integers and an integer target,
+//  find three integers in nums such that the sum is closest to target.
+//   Return the sum of the three integers.
+//  You may assume that each input would have exactly one solution.
+
+
+
+//brute force solution
+   var threeSumClosest = function(nums, target) {
+        if (nums.length <= 2) return null;
+        
+        let sumTotals = [];
+        
+        let closestSumTotal;
+        let closestSumTotalDiff = null;
+    
+        for(let i = 0; i < nums.length - 2; i++){
+            for(let j = i + 1; j < nums.length; j++){
+                for(let y = j + 1; y < nums.length; y++){
+                    let currentTotal = nums[i] + nums[j] + nums[y];
+                    sumTotals.push(currentTotal);
+                }     
+            }
+        }
+
+        sumTotals.forEach(num => {
+            let currentDiff = Math.abs(num - target);
+        
+            
+            if(currentDiff < closestSumTotalDiff || closestSumTotalDiff === null) {
+                closestSumTotal = num;
+                closestSumTotalDiff = currentDiff;
+            }
+            
+        })
+        
+        return closestSumTotal;
+    }; 
+
+    console.log(threeSumClosest([-1, 2, 1, -4], 1))
+    
+</script>   
+</body>
+</html>
