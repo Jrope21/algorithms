@@ -35,11 +35,17 @@ or an empty array if a text contains no words.`
         for(let i = 0; i < text.length; i++) {
         
             if(text[i].match(/[a-z]/i) || text[i] === "'") {
-            word += text[i];
+                word += text[i];
             } else {
             
             if(word.match(/[a-z]/i)) {  
-                wordFrequency[word] = wordFrequency[word] ?  wordFrequency[word] + 1 : 1;
+                wordFrequency[word] = wordFrequency[word] ? {
+                    freq: wordFrequency[word].freq + 1,
+                    priority: wordFrequency[word].priority
+                } : {
+                    freq: 1,
+                    priority: i
+                };
                 word = '';
             } else {
                 word = '';
@@ -48,6 +54,20 @@ or an empty array if a text contains no words.`
             }
             
         }
+
+        if(word.match(/[a-z]/i)) {  
+            wordFrequency[word] = wordFrequency[word] ? {
+                freq: wordFrequency[word].freq + 1,
+                priority: wordFrequency[word].priority
+            } : {
+                freq: 1,
+                priority: text.length - 1
+            };
+            word = '';
+        } else {
+            word = '';
+        }
+        console.log(wordFrequency)
 
         let frequencysSorted = [];
 
@@ -55,7 +75,13 @@ or an empty array if a text contains no words.`
             frequencysSorted.push(value);
         }
 
-        frequencysSorted.sort((a, b) => b - a);
+        frequencysSorted.sort((a, b) => {
+            if(b.freq === a.freq){
+                return b.priority - a.priority;
+            } else {
+                return b.freq - a.freq;
+            }
+        });
 
         console.log(frequencysSorted);
 
@@ -65,7 +91,7 @@ or an empty array if a text contains no words.`
             if(i > 2) break;
 
             for(let [key, value] of Object.entries(wordFrequency)) {
-                if(wordFrequency[key] === frequencysSorted[i] && !topThreeWords.includes(key)){
+                if(wordFrequency[key].freq === frequencysSorted[i].freq && !topThreeWords.includes(key)){
                     topThreeWords.push(key);
                     break;
                 }
@@ -83,7 +109,7 @@ or an empty array if a text contains no words.`
     nights, scraps on Saturdays, lentils on Fridays, and a pigeon or so extra
     on Sundays, made away with three-quarters of his income.`;
 
-    let testBlock = 'a c c'
+    let testBlock = 'Blankets ate against a CD with a blanket into the cat to the jedi'
 
     topThreeWords(testBlock);
 
