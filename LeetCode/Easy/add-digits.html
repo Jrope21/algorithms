@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+var addDigits = function(num) { // TODO fix recursion
+    if(!num) return null;    
+    let numStr = num.toString();  
+    if(num.length < 2) return num;
+    
+    let addedNum = 0;
+    
+    let x = 0;
+    console.log(numStr.length)
+    function addNums() {
+        if (numStr.length < 2) return null;
+        console.log(x, addedNum, numStr);
+        for(let i = 0; i < numStr.length; i++){
+            addedNum += parseFloat(numStr[i]);
+        }
+        
+        numStr = addedNum.toString();
+        
+        x++;
+        if(x < 10) addNums();
+    }
+
+    addNums();
+    
+    console.log(numStr.length)
+    return addedNum
+    
+} 
+
+addDigits(38);
+</script>
+</body>
+</html>
