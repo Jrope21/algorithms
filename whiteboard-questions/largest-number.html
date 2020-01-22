@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    // This was one of my questions in an interview ---
+
+    // Question -
+    // 1. Assuming that an array has atleast 2 values, could you find the largest one?
+    
+    // function largestInt(arr) {
+    //     return Math.max(...arr);
+    // }    
+    
+    // 2. Now could you do that without using max?
+
+    // my answer -
+
+    function largestInt(arr) {
+        let largestInt = arr[0];
+
+        arr.forEach(num => {
+            if(num > largestInt) {
+                largestInt = num;
+            }
+        })
+
+        return largestInt;
+    }
+
+    // should have also mentioned that I could sort the array (I think reduce is the best solution though)
+
+    function largestInt(arr) {
+        arr.sort((a,b) => b - a);
+
+        return arr[0]
+    }
+
+    // refactored (better solution -- sorting is cleaner looking doeeeee)
+
+    function largestInt(arr) {
+        return arr.reduce((largestNum, currentNum) => {
+            if (currentNum > largestNum) {
+                largestNum = currentNum;
+            }
+            return largestNum;
+        }, 0)
+    }
+
+    let numArray = [1,7,3,4,5,6];
+
+    console.log(largestInt(numArray));
+
+</script>
+</body>
+</html>
