@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>I didnt do gooooddoddododododo on this onenennenendenedn</title>
+</head>
+<body>
+<script>
+
+    // question given a start node and an end node -- return true if the node can be reached, false if not
+
+    // Diagram example
+    // node|friends
+    // a   | b,c
+    // b   | a,c
+    // c   | a
+    // f   | g
+    // g   | f
+
+    // example -- checkNodePath(a, g) => would return false
+
+    // my answer -
+    function checkNodePath(start, end) {
+
+        // absolutely bombed it lol (finished but proctor provided HEAVY assistance)
+
+    }
+    
+
+    // refactored solution
+
+    function checkNodePath(start, end, visited = {}) {
+     
+        for(let i = 0; i < start.friends.length; i++){
+            if(end.name == start.friends[i].name) {
+                return true;
+                break;
+            } else if (!visited[start.friends[i].name]) {
+                visited[start.friends[i].name] = 1;   
+                return checkNodePath(start.friends[i], end, visited);
+            }  
+        }
+
+        return false;
+
+    }
+
+
+    // setting up basic nodes so I can solve da problaamamamammamamamma mannnnn
+
+    class Node {
+        constructor(name, friends = []){
+            this.name = name;
+            this.friends = friends;
+        }
+    }
+
+    // node list -- a => b => c     f => g
+    let c = new Node('c', [])
+    let b = new Node('b', [c])
+    let a = new Node('a', [b])
+    
+    let g = new Node('g', [])
+    let f = new Node('f', [g])
+    
+
+    // console.log(a)
+
+
+
+
+
+    console.log(checkNodePath(a, f))
+</script>
+</body>
+</html>
