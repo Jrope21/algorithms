@@ -13,14 +13,14 @@
     // Question -
     // 1. Assuming that an array has atleast 2 values, could you find the largest one?
     
-    // function largestInt(arr) {
-    //     return Math.max(...arr);
-    // }    
+    // my answer -
+    function largestInt(arr) {
+        return Math.max(...arr);
+    }    
     
     // 2. Now could you do that without using max?
 
     // my answer -
-
     function largestInt(arr) {
         let largestInt = arr[0];
 
@@ -56,6 +56,50 @@
 
     console.log(largestInt(numArray));
 
+    // Now could you find the 2nd largest number
+
+    // my answer -
+    function secondLargestInt(arr) {
+        let largestInt = arr[0] > arr[1] ? arr[0] : arr[1];
+        let secondLargestInt = arr[0] > arr[1] ? arr[1] : arr[0];
+
+        arr.forEach(num => {
+            if(num > largestInt) {
+                secondLargestInt = largestInt;
+                largestInt = num;
+            } else if (num > secondLargestInt) {
+                secondLargestInt = num;
+            }
+        })
+
+        return secondLargestInt;
+    }
+
+    // again should have mentioned that I could sort the array :(
+
+    function secondLargestInt(arr) {
+        arr.sort((a,b) => b - a);
+
+        return arr[1];
+    }
+
+    // refactored solution -- about the same but using newer syntax (SOOO COOOOLLLL RECRUITERS BEWAREEEEE)
+
+    function secondLargestInt(arr) {
+        let firstAndSecondLargestInt = arr.reduce((top2Nums, currentNum) => {
+            if(currentNum > top2Nums[0]) {
+                top2Nums[1] = top2Nums[0];
+                top2Nums[0] = currentNum;
+            } else if (currentNum > top2Nums[1]) {
+                top2Nums[1] = currentNum;
+            }
+            return top2Nums;
+        }, [0, 0])
+
+        return firstAndSecondLargestInt[1];
+    }
+
+    console.log(secondLargestInt(numArray));
 </script>
 </body>
 </html>
