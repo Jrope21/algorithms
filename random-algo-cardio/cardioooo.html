@@ -59,6 +59,26 @@
     }
 
     console.log(binarySearch([1,2,3,4,5], 2));
+
+    function bubbleSort(arr) {
+        
+        for(let i = arr.length; i > 0; i--) {
+            let madeSwap = false;
+            for(let y = 0; y < i - 1; y++) {
+                let comparisonValue = arr[i]
+                if(comparisonValue > arr[y]) {
+                    arr[i] = arr[y];
+                    arr[y] = comparisonValue;
+                    madeSwap = true;
+                } 
+            }
+            if(madeSwap) break;
+        }
+
+        return arr;
+    }
+
+    console.log(bubbleSort([10,2,8,18,9,22,22,21,80,1]))
 </script>
 </body>
 </html>
