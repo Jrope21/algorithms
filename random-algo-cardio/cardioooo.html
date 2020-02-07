@@ -58,7 +58,7 @@
         return arr[middle] === val ? middle : -1;
     }
 
-    console.log(binarySearch([1,2,3,4,5], 2));
+    // console.log(binarySearch([1,2,3,4,5], 2));
 
     function bubbleSort(arr) {
         
@@ -78,7 +78,124 @@
         return arr;
     }
 
-    console.log(bubbleSort([10,2,8,18,9,22,22,21,80,1]))
+    function selectionSort(arr) {
+        for(let i = 0; i < arr.length; i++) {
+            let minIndex = i;
+            let minValue = arr[i];
+
+            for(let y = i + 1; y < arr.length; y++) {
+                if (arr[y] < minValue) {
+                    minIndex = y;
+                    minValue = arr[y];
+                }
+            }
+            if(minValue < arr[i] && minValue !== arr[i]) {
+                arr[minIndex] = arr[i];
+                arr[i] = minValue
+            } 
+        }
+        return arr;
+    }
+
+
+    // function insertionSort(arr) {
+    //     for(let i = 1; i < arr.length; i++) {
+    //         let currentValue = arr[i];
+    //         for(let y = i - 1; y > 0; y--){
+    //             if(currentValue > arr[y]) {
+    //                 arr[y + 1] = currentValue;
+    //             }
+    //         }
+    //     }
+    //     return arr;
+    // }
+
+    function insertionSort(arr){
+	var currentVal;
+    for(var i = 1; i < arr.length; i++){
+            currentVal = arr[i];
+            for(var j = i - 1; j >= 0 && arr[j] > currentVal; j--) {
+                if(arr[j] > currentVal) {
+                    arr[j+1] = arr[j]
+                }
+                
+                // console.log(arr);
+            }
+            arr[j+1] = currentVal;
+        }
+        return arr;
+    }
+    
+
+
+
+
+
+
+
+
+    
+    function merge(arr1, arr2) { // my initial solution
+        let newArr = [];
+        let i = 0;
+        let j = 0;
+
+        while (newArr.length !== arr1.length + arr2.length) {
+            if(arr1[i] < arr2[j]) {
+                newArr.push(arr1[i]);
+                i++;
+            } else {
+                newArr.push(arr2[j]);
+                j++;
+            }
+        }
+        return newArr;
+    }
+
+
+    function merge(arr1, arr2) { // maybe slightly more efficient??? -- reduce conditional check amount
+        let newArr = [];
+        let i = 0;
+        let j = 0;
+
+        while (j < arr2.length && i < arr1.length) {
+            if(arr1[i] < arr2[j]) {
+                newArr.push(arr1[i]);
+                i++;
+            } else {
+                newArr.push(arr2[j]);
+                j++;
+            }
+        }
+
+        while (j < arr2.length) {
+            newArr.push(arr2[j]);
+            j++;
+        }
+
+        while (i < arr1.length) {
+            newArr.push(arr1[i]);
+            i++;
+        }
+
+        return newArr;
+    }
+
+    // console.log(merge([1,2,3], [1,2,6,7]));
+
+    function mergeSort(arr) {
+        if(arr.length <= 1) return arr;
+
+        let arr1 = mergeSort(arr.slice(0, Math.floor(arr.length / 2)));
+        let arr2 = mergeSort(arr.slice(Math.floor(arr.length / 2)));
+
+        // mergeSort(arr1);
+        // mergeSort(arr2);
+        
+        return merge(arr1, arr2)
+    }
+
+    console.log(mergeSort([10,2,8,18,9,22,22,21,80,1]))
 </script>
 </body>
 </html>
