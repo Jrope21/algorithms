@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+
+    // quick refresher on class syntax
+
+    class Student {
+        constructor(firstName, lastName) {
+            this.firstName = firstName;
+            this.lastName = lastName;
+            this.tardies = 0;
+            this.scores = [];
+        }
+        
+        name() {
+            return `name be ${this.firstName} ${this.lastName} doe`;
+        }
+
+        markLate() {
+            this.tardies += 1;
+            if(this.tardies > 3) {
+                return 'YOU ARE EXPELLED BISHHH!!!!'
+            }
+        }
+
+        addScore(score) {
+            this.scores.push(score)
+        }
+
+        calcAverage() {
+            return this.scores.reduce((a,b) => a + b) / this.scores.length;
+        }
+
+        static EnrollStudents() {
+            return 'brehhhhhh';
+        }
+    }
+
+    let testStudent = new Student('woaf', 'son');
+    testStudent.addScore(20);
+    testStudent.addScore(50);
+    testStudent.addScore(50);
+    testStudent.markLate();
+    console.log(testStudent);
+
+</script>
+</body>
+</html>
