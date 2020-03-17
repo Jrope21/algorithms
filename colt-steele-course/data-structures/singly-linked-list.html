@@ -40,12 +40,45 @@
             this.length++;
             return this;
         }
+
+        traverse() {
+            let current = this.head;
+            while(current) {
+                console.log(current.data);
+                current = current.next;
+            }
+        }
+
+        removeLastItem() {
+            if (!this.head) return undefined;
+
+            let current = this.head;
+            let i = 0;
+
+            while(i < this.length) {
+
+                if(i === this.length - 2) {
+                    let removedItem = current.next;
+
+                    current.next = null;
+                    this.tail = current;
+
+                    this.length--;
+                    return removedItem;
+                }
+
+                i++;
+                current = current.next;
+            }
+        }
     }
 
     let list = new SinglyLinkedList();
     list.push('first node');
     list.push('2nd node');
-    console.log(list)
+    list.push('third node')
+
+    console.log(list);
 
 </script>
 </body>
