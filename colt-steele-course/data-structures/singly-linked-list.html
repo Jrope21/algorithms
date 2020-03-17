@@ -49,7 +49,7 @@
             }
         }
 
-        removeLastItem() {
+        pop() {
             if (!this.head) return undefined;
 
             let current = this.head;
@@ -68,8 +68,27 @@
                 }
 
                 i++;
+
+                if(this.length === 0) {
+                    this.head = null;
+                    this.tail = null;
+                }
                 current = current.next;
             }
+        }
+
+        shift() {
+            if (!this.head) return undefined;
+            
+            let oldHead = this.head;
+            this.head = this.head.next;
+            this.length--;
+
+            if(this.length === 0) {
+                this.tail = null;
+            }
+            
+            return oldHead;
         }
     }
 
