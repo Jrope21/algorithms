@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+<script>
+    function diagonalDifference(arr) {
+        // Write your code here
+        let left = 0;
+        let leftSum = 0;
+        let rightInner = arr.length - 1;
+        let rightSum = 0;
+
+        while(left < arr.length) {
+            leftSum += arr[left][left];
+            rightSum += arr[left][rightInner];
+
+            left++;
+            rightInner--;
+        }
+        console.log(leftSum - rightSum);
+        return leftSum - rightSum;
+    }
+
+    diagonalDifference([
+        [11,2,4],
+        [4,5,6],
+        [10,8,-12]
+    ])
+
+</script>
+    
+</body>
+</html>

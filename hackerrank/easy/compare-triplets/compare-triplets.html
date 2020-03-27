@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+<script>
+    function compareTriplets(a, b) {
+        if(a.length !== 3 && b.length !== 3) return null;
+        let aPoints = 0;
+        let bPoints = 0;
+
+        for(let i = 0; i < a.length; i++) {
+            if(a[i] > b[i]) {
+                aPoints++;
+            } else if (a[i] < b[i]) {
+                bPoints++;
+            } 
+        }
+
+        console.log([aPoints, bPoints]);
+        return [aPoints, bPoints];
+    }
+
+    compareTriplets([1,2,3], [4,4,4]);
+</script>
+
+</body>
+</html>
