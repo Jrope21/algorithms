@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    // remove element from array
+    // divide element by 2
+    // insert the Math.ceil of result
+
+    // const minSum = (nums, k) => {
+    //     if(!nums.length) return null;
+    //     if(k === 1) return nums.reduce((a,b) => a + b);
+        
+    //     nums = nums.map(num => Math.ceil(num / 2))
+    //     return minSum(nums, k - 1);
+    // }
+
+
+    //  perform an operation on ONE array item
+    //  try to get the minimum sum
+    //  => should track this in a heap?
+
+    // const minSum = (nums, k) => {
+    //     if(!nums.length) return null;
+    //     if(k === 0) return nums.reduce((a,b) => a + b);
+
+    //     let largestNumber = nums.reduce((acc, val, i) => {
+    //         if(val > acc.value) {
+    //             return acc = {value: val, index: i};
+    //         }
+    //         return acc;
+    //     }, {value: nums[0], index: 0})
+
+    //     nums[largestNumber.index] = Math.ceil(largestNumber.value / 2);
+
+    //     return minSum(nums, k - 1);
+    // }
+    // minSum([10,20,7], 4);
+
+
+    // const minSum = (nums, k) => {
+    //     if(k === 0) return nums.reduce((a, b) => a + b)
+    //     let maxValue = nums[0];
+    //     let maxValueIndex = 0;
+    //     for(let operationCount = k; operationCount >= 0; operationCount--) {
+    //         for(let i = 0; i < nums.length; i++) {
+    //             if(maxValue < nums[i]) {
+    //                 maxValue = nums[i];
+    //                 maxValueIndex = i;
+    //             }
+    //         }
+    //     }
+        
+
+    //     nums[maxValueIndex] = Math.ceil(maxValue / 2);
+
+    //     return minSum(nums, k - 1);
+    // }
+
+
+    const minSum = (nums, k) => {
+        
+        for(let ki = k; ki > 0; ki--) {
+            let maxNum = {
+                value: nums[0],
+                index: 0
+            };
+            for(let i = 0; i < nums.length; i++){
+                if(nums[i] > maxNum.value) {
+                    maxNum.value = nums[i];
+                    maxNum.index = i;
+                }
+            }
+            nums[maxNum.index] = Math.ceil(maxNum.value / 2);
+        }
+
+        return nums.reduce((a,b) => a + b);
+    }
+    console.log(minSum([10,20,7], 4));
+</script>
+</body>
+</html>
