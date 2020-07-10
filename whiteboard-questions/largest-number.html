@@ -13,6 +13,8 @@
     // Question -
     // 1. Assuming that an array has atleast 2 values, could you find the largest one?
     
+    let numArray = [1,7,3,4,5,6,8];
+
     // my answer -
     function largestInt(arr) {
         return Math.max(...arr);
@@ -33,30 +35,7 @@
         return largestInt;
     }
 
-    // should have also mentioned that I could sort the array (I think reduce is the best solution though)
-
-    function largestInt(arr) {
-        arr.sort((a,b) => b - a);
-
-        return arr[0]
-    }
-
-    // refactored (better solution -- sorting is cleaner looking doeeeee)
-
-    function largestInt(arr) {
-        return arr.reduce((largestNum, currentNum) => {
-            if (currentNum > largestNum) {
-                largestNum = currentNum;
-            }
-            return largestNum;
-        }, 0)
-    }
-
-    let numArray = [1,7,3,4,5,6];
-
-    console.log(largestInt(numArray));
-
-    // Now could you find the 2nd largest number
+    // 3. Now could you find the 2nd largest number
 
     // my answer -
     function secondLargestInt(arr) {
@@ -74,6 +53,90 @@
 
         return secondLargestInt;
     }
+    
+// ********************************************************
+// ********************************************************
+// **
+// **  Refactored solution --- did around 07-10-2020 
+// **  2. Now could you do that without using max?
+// **
+// ********************************************************
+// ******************************************************** 
+
+
+// ********************************************************
+//  2. Now could you do that without using max?
+// ********************************************************
+
+    function largestInt(arr) {
+        return arr.reduce((accumulator, current) => {
+            return current > accumulator ? accumulator = current : accumulator;
+        }, arr[0])
+    }
+
+    // should have also mentioned that I could sort the array (I think reduce is the best solution though)
+
+    const largestIntSort=arr=>arr.sort((a,b)=>a > b ? -1 : 1)[0];
+
+
+// ********************************************************
+//  3. Now could you find the second largest number
+// ********************************************************
+
+
+
+// simple sort solution
+const secondlargestIntSort=arr=>arr.sort((a,b)=>a > b ? -1 : 1)[1];
+
+function secondLargestInt(arr) {
+    return arr.reduce((accumulator, current) => {
+        if(current > accumulator.largest) {
+            accumulator.secondLargest = accumulator.largest;
+            accumulator.largest = current;
+        } else if (current > accumulator.secondLargest) {
+            accumulator.secondLargest = current;
+        }
+        return accumulator;
+    }, {
+        largest: arr[0], 
+        secondLargest: arr[0]
+    })
+}
+
+console.log(secondLargestInt(numArray));
+
+
+// ********************************************************
+// ********************************************************
+// **
+// **  Refactored solution --- did around 04-01-2020 
+// **  better solution -- sorting is cleaner looking doeeeee
+// **
+// ********************************************************
+// ******************************************************** 
+
+    function largestInt(arr) {
+        return arr.reduce((largestNum, currentNum) => {
+            if (currentNum > largestNum) {
+                largestNum = currentNum;
+            }
+            return largestNum;
+        }, 0)
+    }
+
+
+// should have also mentioned that I could sort the array (I think reduce is the best solution though)
+
+    function largestInt(arr) {
+        arr.sort((a,b) => b - a);
+
+        return arr[0]
+    }
+
+
+
+    // Now could you find the 2nd largest number
+
 
     // again should have mentioned that I could sort the array :(
 
@@ -99,7 +162,7 @@
         return firstAndSecondLargestInt[1];
     }
 
-    console.log(secondLargestInt(numArray));
+    // console.log(secondLargestInt(numArray));
 </script>
 </body>
 </html>

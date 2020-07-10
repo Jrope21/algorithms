@@ -30,7 +30,14 @@
     }
 
 
-    // refactored solution -- did around 04-01-2020
+// ********************************************************
+// ********************************************************
+// **
+// **  Refactored solution --- did around 04-01-2020
+// **
+// ********************************************************
+// ********************************************************
+
 
     function checkNodePath(start, end, visited = {}) {
      
@@ -48,8 +55,16 @@
     }
 
 
-    // refactored solution -- did around 07-10-2020
-    // Not really more efficient, but looks cleaner / easier to read
+// ********************************************************
+// ********************************************************
+// **
+// **  Refactored solution --- did around 07-10-2020
+// **  Not really more efficient, but looks cleaner / easier to read
+// **
+// ********************************************************
+// ********************************************************
+
+
     function checkNodePath(start, end, nodesVisited = {}) {
         if(start.name == end.name) return true; 
         nodesVisited[start.name] = true;
