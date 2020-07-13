@@ -88,6 +88,8 @@
 // simple sort solution
 const secondlargestIntSort=arr=>arr.sort((a,b)=>a > b ? -1 : 1)[1];
 
+// reduce solution
+
 function secondLargestInt(arr) {
     return arr.reduce((accumulator, current) => {
         if(current > accumulator.largest) {
