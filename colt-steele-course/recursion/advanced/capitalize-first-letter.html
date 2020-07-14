@@ -10,13 +10,15 @@
     <script>
     
     
-    function capitalizeFirst (str) {
+    function capitalizeFirst (arr) {
      // add whatever parameters you deem necessary - good luck!
-
+        if(!arr.length) return arr;
+        let capital = arr[0][0].toUpperCase();
+        return [...capitalizeFirst(arr.slice(1)), capital + arr[0].slice(1)]
      }
     
 
-     capitalizeFirst(['car','taco','banana'])
+     console.log(capitalizeFirst(['car','taco','banana']))
     </script>
 </body>
 </html>
