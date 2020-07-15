@@ -11,43 +11,77 @@
 // had to add extra lines to match leetcodes data set
 //TODO needs to get refactored
 
-    var reverse = function(x) {
-        x = x.toString().split('');
+    // var reverse = function(x) {
+    //     x = x.toString().split('');
         
         
-        let foundNum = false;
-        let i = x.length - 1;
+    //     let foundNum = false;
+    //     let i = x.length - 1;
 
-        //this loop is most likely redundant
-        while(foundNum = false && i > 0){
+    //     //this loop is most likely redundant
+    //     while(foundNum = false && i > 0){
 
-            if(x[i] !== 0){
-                foundNum = true;
-            } else {
-                x.pop()
-            }
+    //         if(x[i] !== 0){
+    //             foundNum = true;
+    //         } else {
+    //             x.pop()
+    //         }
 
-            i--;
-        }
+    //         i--;
+    //     }
         
-        x = x.reverse();
+    //     x = x.reverse();
         
-        if(x[x.length - 1] == '-'){
-            x.pop();
-            x = x.join('');
-            let finalNum = '-' + parseInt(x);
-            console.log(finalNum)
-            return finalNum < -2147483647 ? 0 : finalNum;
-        }
-        console.log(x);
-        x = x.join('');
-        let finalNum = parseInt(x);
-        // console.log(finalNum);
-        return finalNum > 2147483647 ? 0 : finalNum;
+    //     if(x[x.length - 1] == '-'){
+    //         x.pop();
+    //         x = x.join('');
+    //         let finalNum = '-' + parseInt(x);
+    //         console.log(finalNum)
+    //         return finalNum < -2147483647 ? 0 : finalNum;
+    //     }
+    //     console.log(x);
+    //     x = x.join('');
+    //     let finalNum = parseInt(x);
+    //     // console.log(finalNum);
+    //     return finalNum > 2147483647 ? 0 : finalNum;
         
-    };  
+    // }; 
+     
 
-    reverse(-123);
+// ********************************************************
+// ********************************************************
+// **
+// **  Refactored solution --- 07-14-2020
+// **  -- just wanted to mess around with below 2 solutions
+// **  -- best solution would be to do this without turning it into a string
+// **
+// ********************************************************
+// ********************************************************
+
+
+    // const reverse = (x) => {
+    //     let isNegative = x < 0;
+
+    //     x = x.toString();
+    //     let newIntStr = ''
+        
+    //     if(isNegative) newIntStr = '-';
+     
+    //     for (let i = x.length - 1; i >= isNegative ? 1 : 0; i--) {
+    //         newIntStr += x[i];
+    //     }
+
+    //     let newInt = parseInt(newIntStr);
+    //     return newInt > 2147483647 || newInt < -2147483647 ? 0 : newInt;
+    // }
+
+    const reverse = (x) => {
+        let negativeIndicator = x < 0 ? '-' : '';
+        let newInt = parseInt(negativeIndicator + x.toString().split('').reverse().join(''));
+        return newInt > 2147483647 || newInt < -2147483647 ? 0 : newInt;
+    }
+
+    console.log(reverse(123));
     </script>
 </body>
 </html>

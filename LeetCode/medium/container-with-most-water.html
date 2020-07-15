@@ -34,7 +34,14 @@
 // Input: [1,8,6,2,5,4,8,3,7]
 // Output: 49
 
-//slower solutions -> faster solution would be using two pointers
+// ********************************************************
+// ********************************************************
+// **
+// **  Old Solutiong -- brings back mems ;)
+// **
+// ********************************************************
+// ********************************************************
+
 
 var maxArea = function(height) {
     let containers = [];
@@ -53,6 +60,38 @@ var maxArea = function(height) {
     
 maxArea([1,8,6,2,5,4,8,3,7]);
     
+
+// ********************************************************
+// ********************************************************
+// **
+// **  Refactored solution --- 07-14-2020
+// **  -- did this solution for a better O(N) - avoids nested loops
+// **
+// ********************************************************
+// ********************************************************
+
+
+// use two pointer
+// => should get the are of each iteration
+// => whichever pointer is shorter should be moved to continue loop / algo
+const maxAreaPointers = (heights) => {
+    let maxArea = 0;
+    let left = 0;
+    let right = heights.length - 1;
+
+    while (left < right) {
+        const curMaxArea = Math.min(heights[left], heights[right]) * (right - left);
+        maxArea = Math.max(curMaxArea, maxArea);
+
+        if(heights[left] > heights[right]) {
+            right--;
+        } else {
+            left++;
+        }
+    }
+
+    return maxArea
+} 
     
     </script>
 </body>
