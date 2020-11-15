@@ -7,43 +7,86 @@
     <title>Document</title>
 </head>
 <body>
-    <script>
-       /* var twoSum = function(nums, target) {
-            indec = [];
+<script>
 
-            for(let i = 0; i < nums.length; i++){
-                for(let x = 0; x < nums.length; x++){
-                    let numAdded = nums[i] + nums[x];
-                    if(numAdded == target && i !== x){
-                        indec.push(i, x);
-                    // return
-                    i = nums.length;
-                    //  x= 5;
-                    }
-                    //console.log(numAdded);
-                }
-            }
-            console.log(indec);
-            return indec
-        };*/
+// Given an array of integers, 
+//  return indices of the two numbers such that they add up to a specific 
+//  target.
+// You may assume that each input would have exactly one solution, 
+// and you may not use the same element twice.
+
+// ********************************************************
+// ********************************************************
+// **
+// **  old solution -- did lonngggg time ago
+// **
+// ********************************************************
+// ********************************************************
 
 
-        // new solution... 
-        // => use for loop, so I could easily break out once the answer is found
-        var twoSum = function(numbers, target) {
-            let nums = {};
-            
-            for(let i = 0; i < numbers.length; i++) {
-                if(nums[target - numbers[i]] >= 0) {
-                    return[i, nums[target - numbers[i]]];
-                }
-                nums[numbers[i]] = i;
-            }
-        };
+    // var twoSum = function(nums, target) {
+    //     indec = [];
 
-        console.log(
-            twoSum([2,7,11,15], 9)
-        )
-    </script>
+    //     for(let i = 0; i < nums.length; i++){
+    //         for(let x = 0; x < nums.length; x++){
+    //             let numAdded = nums[i] + nums[x];
+    //             if(numAdded == target && i !== x){
+    //                 indec.push(i, x);
+    //             // return
+    //             i = nums.length;
+    //             //  x= 5;
+    //             }
+    //             //console.log(numAdded);
+    //         }
+    //     }
+    //     console.log(indec);
+    //     return indec
+    // };
+
+
+// ********************************************************
+// ********************************************************
+// **
+// **  Refactored solution --- 07-14-2020
+// **  -- did this solution for a better O(N) - avoids nested loops
+// **
+// ********************************************************
+// ********************************************************
+
+
+const twoSum = (nums, target) => { // this one ran slower?? 84ms
+    const numsObj = {};
+
+    for(let i = 0; i < nums.length; i++) {
+        let difference = target - nums[i];
+
+        if(numsObj.hasOwnProperty(difference)) {
+            return [numsObj[difference], i]
+        }
+
+        numsObj[nums[i]] = i;
+    }
+}
+
+
+// const twoSum = (nums, target) => { // this one ran faster??? 68ms
+//     const numsObj = {};
+
+//     for(let i = 0; i < nums.length; i++) {
+//         numsObj[nums[i]] = i;
+//     }
+
+//     for(let i = 0; i < nums.length; i++) {
+//         let difference = target - nums[i];
+
+//         if(numsObj[difference] === i) continue;
+
+//         if(numsObj[difference]) {
+//             return [i, numsObj[difference]];
+//         }
+//     }
+// }
+        
+</script>
 </body>
 </html>

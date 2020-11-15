@@ -15,11 +15,12 @@
     // node|friends
     // a   | b,c
     // b   | a,c
-    // c   | a
+    // c   | a,f
     // f   | g
     // g   | f
 
     // example -- checkNodePath(a, g) => would return false
+    // example -- checkNodePath(a, g) => would return true (friends of friends can reach this)
 
     // my answer -
     function checkNodePath(start, end) {
@@ -27,9 +28,16 @@
         // absolutely bombed it lol (finished but proctor provided HEAVY assistance)
 
     }
-    
 
-    // refactored solution
+
+// ********************************************************
+// ********************************************************
+// **
+// **  Refactored solution --- did around 04-01-2020
+// **
+// ********************************************************
+// ********************************************************
+
 
     function checkNodePath(start, end, visited = {}) {
      
@@ -44,7 +52,28 @@
         }
 
         return false;
+    }
 
+
+// ********************************************************
+// ********************************************************
+// **
+// **  Refactored solution --- did 07-10-2020
+// **  Not really more efficient, but looks cleaner / easier to read
+// **
+// ********************************************************
+// ********************************************************
+
+
+    function checkNodePath(start, end, nodesVisited = {}) {
+        if(start.name == end.name) return true; 
+        nodesVisited[start.name] = true;
+
+        return start.friends.some(friend => {
+            if(!nodesVisited[friend.name]) return checkNodePath(friend, end, nodesVisited)
+        })
+
+        return false;
     }
 
 

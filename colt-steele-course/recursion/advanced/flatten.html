@@ -9,8 +9,16 @@
 <body>
     <script>
         
-        //not the best solution -- tried to use pure recursion
-        
+//not the best solution -- tried to use pure recursion
+// ********************************************************
+// ********************************************************
+// **
+// **  old solution -- did months ago
+// **
+// ********************************************************
+// ********************************************************
+
+
         function flatten(arr){
             // add whatever parameters you deem necessary - good luck!
             let flatArr = [];
@@ -31,9 +39,27 @@
 
             return flatArr;
         }    
+
+
+// ********************************************************
+// ********************************************************
+// **
+// **  Refactored solution --- did 07-30-2020
+// **
+// ********************************************************
+// ********************************************************
         
-    console.log('did not cet a better solution yet :(')
-        flatten([[[[1], [[[2]]], [[[[[[[3]]]]]]]]]]);
+
+        function flatten(arr, flat = []) {
+            arr.map((el) => {
+                if(!Array.isArray(el)) return flat.push(el);
+                return flatten(el, flat);
+            }, [])
+
+            return flat;
+        }
+
+        console.log(flatten([[[[1], [[[2]]], [[[[[[[3]]]]]]]]]]));
         
     </script>
 </body>

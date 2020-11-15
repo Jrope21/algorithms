@@ -8,25 +8,59 @@
 </head>
 <body>
     <script>
-        //solution 1 
-// var isPalindrome = function(x) {
-//     x = x.toString();
-//     x = x.split('')
-//     let xRev = [...x].reverse().join('');
-//     for (let i = 0; i < x.length; i++){
-//        if( x[i] != xRev[i]) return false;
-//     }
-//    return true;
-// }
 
-//solution 2 - regex
-var isPalindrome = function(x) {
-    x = x.toString();
-    let xRev = [...x].reverse().join('');
-    return RegExp(x).test(xRev);
-};
-isPalindrome(123)
-console.log(isPalindrome(121))
+// ********************************************************
+// ********************************************************
+// **
+// **  Old solutiong
+// **
+// ********************************************************
+// ********************************************************
+
+        //solution 1 
+        // var isPalindrome = function(x) {
+        //     x = x.toString();
+        //     x = x.split('')
+        //     let xRev = [...x].reverse().join('');
+        //     for (let i = 0; i < x.length; i++){
+        //        if( x[i] != xRev[i]) return false;
+        //     }
+        //    return true;
+        // }
+
+        //solution 2 - regex
+        var isPalindrome = function(x) {
+            x = x.toString();
+            let xRev = [...x].reverse().join('');
+            return RegExp(x).test(xRev);
+        };
+
+        isPalindrome(123)
+        console.log(isPalindrome(121))
+
+
+// ********************************************************
+// ********************************************************
+// **
+// **  Refactored solution --- 07-15-2020
+// **  -- using multiple pointers for better O(N) - decreases amount of loops
+// **
+// ********************************************************
+// ********************************************************
+
+        const isPalindromePointers = (int) => {
+            const intStr = int.toString();
+            let left = 0;
+            let right = intStr.length - 1;
+
+            while (left < right) {
+                if(intStr[left] !== intStr[right]) return false;
+                left++;
+                right--;
+            }
+
+            return true;
+        }
     </script>
 </body>
 </html>
