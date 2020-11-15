@@ -8,7 +8,7 @@
 </head>
 <body>
     <script>
-        var twoSum = function(nums, target) {
+       /* var twoSum = function(nums, target) {
             indec = [];
 
             for(let i = 0; i < nums.length; i++){
@@ -25,7 +25,25 @@
             }
             console.log(indec);
             return indec
+        };*/
+
+
+        // new solution... 
+        // => use for loop, so I could easily break out once the answer is found
+        var twoSum = function(numbers, target) {
+            let nums = {};
+            
+            for(let i = 0; i < numbers.length; i++) {
+                if(nums[target - numbers[i]] >= 0) {
+                    return[i, nums[target - numbers[i]]];
+                }
+                nums[numbers[i]] = i;
+            }
         };
+
+        console.log(
+            twoSum([2,7,11,15], 9)
+        )
     </script>
 </body>
 </html>
