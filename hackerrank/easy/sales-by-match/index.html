@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+
+    // Complete the sockMerchant function below.
+    function sockMerchant(n, ar) {
+       let totalPairs = 0;
+        
+        const frequencyCounter = {};
+        
+        ar.forEach(color => {
+            frequencyCounter[color] ? frequencyCounter[color] = frequencyCounter[color] + 1 : frequencyCounter[color] = 1;
+            
+            if(frequencyCounter[color] >= 2) {
+                totalPairs++;
+                frequencyCounter[color] = 0;
+            }
+        })
+        
+        return totalPairs;
+    }
+
+    console.log(sockMerchant(9, [10, 20, 20, 10, 10, 30, 50, 10, 20]));
+
+</script>
+</body>
+</html>
